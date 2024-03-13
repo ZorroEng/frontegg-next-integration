@@ -1,6 +1,15 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
+import {withFronteggApp} from "@frontegg/nextjs/pages";
 
-export default function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />;
 }
+
+export default withFronteggApp(App, {
+  hostedLoginBox: true,
+  lazyLoadAdminPortal: true,
+  authOptions: {
+    keepSessionAlive: true,
+  },
+});
